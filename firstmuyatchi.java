@@ -1,6 +1,7 @@
 package com.learningstudent.restwebservice.learingrestframework;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,9 +27,9 @@ public class firstmuyatchi {
 		return "Success lies in taking risks! Thuninthu Sel!";
 	}
 	
-	@GetMapping(path="/firstmuyartchi_inspring_step3_bean")
-	public FirstMuyartchiBean firstmuyatchiBean() {
-		return new FirstMuyartchiBean("Burn the Purspose to Grow ! Thuninthu Sel!");
+	@GetMapping(path="/firstmuyartchi_inspring_step3_bean/{name}")
+	public FirstMuyartchiBean firstmuyatchiBean(@PathVariable String name) {
+		return new FirstMuyartchiBean(String.format("Hello %s , Burn the Purspose to Grow ! Thuninthu Sel!",name));
 	}
 
 	
