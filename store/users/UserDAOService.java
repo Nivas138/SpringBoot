@@ -9,15 +9,15 @@ import org.springframework.stereotype.Component;
 
 public class UserDAOService {
 
-	private static List<User> userlist = new ArrayList<>();
+	private List<User> userlist = new ArrayList<>();
 	
-	private static int userlistcount = 0;
+	private static int userlistcount = 2;
 	
-	static {
-		userlist.add(new User("Nivas", 1,"Builder"));
+	public UserDAOService() {
+		 userlist.add(new User("Nivas", 1,"Builder"));
 		userlist.add(new User("Nivas Ganesan" , 2 , "Thinker"));
 	}
-	
+
 	//function for find all
 	public List<User> findAll(){
 		return userlist;
@@ -38,6 +38,15 @@ public class UserDAOService {
 			if(id == user.getId()) {
 				return user;
 			}
+		}
+		return null;
+	}
+	
+	//function to delete user
+	public User deleteUser(int id) {
+		if(userlist.contains(id)) {
+			userlist.remove(id);
+			//return user;
 		}
 		return null;
 	}

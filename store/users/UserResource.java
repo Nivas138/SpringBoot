@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -27,5 +29,14 @@ public class UserResource {
 		return daoservice.findSingle(userid);
 	}
 	
+	@PostMapping("/users")
+	public void SaveUser(@RequestBody User user) {
+		User saveduser = daoservice.Save(user);
+	}
 	
+	@GetMapping("/users/delete/{id}")
+	public void deleteUser(@PathVariable String id) {
+		int userid = Integer.parseInt(id);
+		User deletedUser = daoservice.deleteUser(userid);
+	}
 }
